@@ -1,0 +1,51 @@
+{% extends 'AdminBundle:Base:base.html.twig' %}
+
+{% block title %}StartPack | Admin - Login{% endblock %}
+
+{% block body %}
+    <div class="row marginTop30px">
+    	<div class="span12">
+            <h2 class="fLeft">Liste des pages</h2>
+            <div class="fRight">
+                <a href="" class="btn btn-success"><i class="icon-plus"></i> Ajouter une page</a>
+            </div>
+            <br class="sep" /> 
+    		<table id="myTable" class="tablesorter"> 
+                <thead> 
+                    <tr> 
+                        <th width="10">ID</th>
+                        <th>Nome de la page</th>
+                        <th>Slug</th>
+                        <th width="100">Action</th> 
+                    </tr>
+                </thead> 
+                <tbody>
+                    {% for page in pages %}
+                        <tr>
+                            <td>{{ page.id }}</td>
+                            <td>{{ page.name }}</td>
+                            <td>{{ page.slug }}</td>
+                            <td><a href="{{ path('admin_cms_view', {'id': page.id}) }}"><i class="icon-eye-open"></i></a> <a href=""><i class="icon-pencil"></i></a> <a href=""><i class="icon-trash"></i></a></td>
+                        </tr>
+                    {% endfor %}
+                </tbody> 
+            </table> 
+
+            <script type="text/javascript">
+                $(document).ready(function() 
+                    { 
+                        // $("#myTable").tablesorter();
+                        $("#myTable").tablecloth({
+                            theme: "stats",
+                            striped: true,
+                            sortable: true,
+                            condensed: false,
+                            bordered: false,
+                            clean: false
+                        });
+                    }
+                ); 
+            </script>
+		</div>
+	</div>
+{% endblock %}
