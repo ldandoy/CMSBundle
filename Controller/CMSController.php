@@ -23,9 +23,10 @@ class CMSController extends AbstractCoreController
     public function indexAction($slug)
     {
     	$page = $this->getDoctrine()->getRepository('CoreBundle:Page')->findOneBySlug($slug);
-        
+        $config = $this->getDoctrine()->getRepository('CoreBundle:Config')->getConfig();
         return array(
         	'page'     => $page,
+            'config'   => $config,
         	'slug'     => $slug
         );
     }

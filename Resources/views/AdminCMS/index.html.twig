@@ -3,13 +3,15 @@
 {% block title %}StartPack | Admin - Login{% endblock %}
 
 {% block body %}
-    <div class="row marginTop30px">
+    <div class="row">
     	<div class="span12">
-            <h2 class="fLeft">Liste des pages</h2>
-            <div class="fRight">
-                <a href="" class="btn btn-success"><i class="icon-plus"></i> Ajouter une page</a>
+            <div class="page-header">
+                <h3 class="fLeft">Liste des pages</h2>
+                <div class="fRight">
+                    <a href="" class="btn btn-success"><i class="icon-plus"></i> Ajouter une page</a>
+                </div>
+                <br class="sep" />
             </div>
-            <br class="sep" /> 
     		<table id="myTable" class="tablesorter"> 
                 <thead> 
                     <tr> 
@@ -25,7 +27,7 @@
                             <td>{{ page.id }}</td>
                             <td>{{ page.name }}</td>
                             <td>{{ page.slug }}</td>
-                            <td><a href="{{ path('admin_cms_view', {'id': page.id}) }}"><i class="icon-eye-open"></i></a> <a href=""><i class="icon-pencil"></i></a> <a href=""><i class="icon-trash"></i></a></td>
+                            <td><a href="{{ path('admin_cms_view', {'id': page.id}) }}"><i class="icon-eye-open"></i></a> <a href="{{ path('admin_cms_edit', {'id': page.id}) }}"><i class="icon-pencil"></i></a> <a href=""><i class="icon-trash"></i></a></td>
                         </tr>
                     {% endfor %}
                 </tbody> 
@@ -34,7 +36,6 @@
             <script type="text/javascript">
                 $(document).ready(function() 
                     { 
-                        // $("#myTable").tablesorter();
                         $("#myTable").tablecloth({
                             theme: "stats",
                             striped: true,

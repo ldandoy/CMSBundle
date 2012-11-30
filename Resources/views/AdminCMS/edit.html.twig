@@ -1,0 +1,52 @@
+{% form_theme form 'AdminBundle:Form:form_admin.html.twig' %}
+{% extends 'AdminBundle:Base:base.html.twig' %}
+
+{% block title %}StartPack | Admin - Login{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{{ asset('bundles/cms/css/bootstrap-wysihtml5-0.0.2.css') }}"></link>
+{% endblock %}
+
+{% block js %}
+<script src="{{ asset('bundles/cms/js/wysihtml5-0.3.0_rc2.min.js') }}"></script>
+<script src="{{ asset('bundles/cms/js/bootstrap-wysihtml5-0.0.2.min.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+    	<div class="span12">
+            <div class="page-header">
+                <h1>Edition de la page: {{ page.name }}</h1>
+            </div>
+
+            <form action="" metod="post">
+                <div class="">
+                    <div class="fLeft width30p">{{ form_label(form.name) }}</div>
+                    <div class="fLeft width50p">{{ form_widget(form.name) }} {{ form_errors(form.name) }}</div>
+                    <br class="sep" />
+                </div>
+
+                <div class="">
+                    <div class="fLeft width30p">{{ form_label(form.slug) }}</div>
+                    <div class="fLeft width50p">{{ form_widget(form.slug) }} {{ form_errors(form.slug) }}</div>
+                    <br class="sep" />
+                </div>
+
+                <div class="">
+                    <div class="fLeft width30p">{{ form_label(form.content) }}</div>
+                    <div class="fLeft width50p"><textarea id="some-textarea" placeholder="Enter text ...">{{form_widget(form.content) }}</textarea></div>
+                    <br class="sep" />
+                </div>
+            </form>
+
+            <p align="right">
+                <a href="{{ path('admin_cms_edit', {'id': page.id}) }}" class="btn btn-success">Enregistrer</a>
+            </p>
+
+		</div>
+	</div>
+
+    <script type="text/javascript">
+        $('#some-textarea').wysihtml5();
+    </script>
+{% endblock %}

@@ -41,4 +41,20 @@ class AdminCMSController extends AbstractCoreController
             'activeCMS' => true
         );
     }
+
+    /**
+     * @Route("/{id}/edit", name="admin_cms_edit")
+     * @Template()
+     */
+    public function editAction(Model\Page $page)
+    {
+        
+        $form = $this->createForm(new Form\PageType(), $page);
+
+        return array(
+            "page"  =>  $page,
+            'activeCMS' => true,
+            'form' => $form->createView()
+        );
+    }
 }

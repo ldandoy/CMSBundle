@@ -1,0 +1,33 @@
+{% extends 'AdminBundle:Base:base.html.twig' %}
+
+{% block title %}StartPack | Admin - Login{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{{ asset('bundles/cms/css/bootstrap-wysihtml5-0.0.2.css') }}"></link>
+{% endblock %}
+
+{% block js %}
+<script src="{{ asset('bundles/cms/js/wysihtml5-0.3.0_rc2.min.js') }}"></script>
+<script src="{{ asset('bundles/cms/js/bootstrap-wysihtml5-0.0.2.min.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+    	<div class="span12">
+            <div class="page-header">
+                <h3 class="fLeft">Edition de la page: {{ page.name }}</h3>
+                <br class="sep" />
+            </div>
+
+            <textarea id="some-textarea" placeholder="Enter text ...">{{ page.content }}</textarea>
+            <script type="text/javascript">
+                $('#some-textarea').wysihtml5();
+            </script>
+
+            <p align="right">
+                <a href="{{ path('admin_cms_edit', {'id': page.id}) }}" class="btn btn-success">Enregistrer</a> <a href="{{ path('admin_cms_index') }}" class="btn">Retour</a>
+            </p>
+
+		</div>
+	</div>
+{% endblock %}
