@@ -12,12 +12,14 @@
 	    	{% for i in range(1, config['nb-colonne']) %}
 		        <div class="colonne{{ i }}">
 		        	{% for pageModule in page.pageModules %}
-		        		{% debug pageModule.pageModuleContents %}
-                        {% if pageModule.colonneId == i %}
-                        
+		        		{% if pageModule.colonneId == i %}
+                            {% for moduleContents in pageModule.pageModuleContents %}
+                                <div id="" class="">
+                                    {{ moduleContents.valeur }}
+                                </div>
+                            {% endfor %}
                         {% endif %}
 		        	{% endfor %}
-		        	{{ page.content }}
 		        </div>
 	        {% endfor %}
         </div>

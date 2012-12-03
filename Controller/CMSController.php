@@ -24,6 +24,7 @@ class CMSController extends AbstractCoreController
     {
     	$page = $this->getDoctrine()->getRepository('CoreBundle:Page')->findOneBySlug($slug);
         $config = $this->getDoctrine()->getRepository('CoreBundle:Config')->getConfig();
+        
         return array(
         	'page'     => $page,
             'config'   => $config,
