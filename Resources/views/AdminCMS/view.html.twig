@@ -15,19 +15,48 @@
     <div class="row">
     	<div class="span12">
             <div class="page-header">
-                <h3 class="fLeft">Edition de la page: {{ page.name }}</h3>
+                <h3 class="fLeft">Page: {{ page.name }} <span class="tSilver tFontSize12px">(/page/{{ page.slug }})</span></h3>
                 <br class="sep" />
             </div>
 
-            <textarea id="some-textarea" placeholder="Enter text ...">{{ page.content }}</textarea>
-            <script type="text/javascript">
-                $('#some-textarea').wysihtml5();
-            </script>
+            <table id="myTable" class="tablesorter"> 
+                <thead> 
+                    <tr> 
+                        <th width="10">ID</th>
+                        <th>Module</th>
+                        <th width="10">Colonne</th>
+                        <th width="70">Action</th> 
+                    </tr>
+                </thead> 
+                <tbody>
+                    {% for pageModule in page.pageModules %}
+                        <tr>
+                            <td>{{ pageModule.id }}</td>
+                            <td>{{ pageModule.module.nom }}</td>
+                            <td>{{ pageModule.colonneId }}</td>
+                            <td><a href="{{ path('admin_cms_view', {'id': page.id}) }}"><i class="icon-eye-open"></i></a> <a href="{{ path('admin_cms_edit', {'id': page.id}) }}"><i class="icon-pencil"></i></a> <a href=""><i class="icon-trash"></i></a></td>
+                        </tr>
+                    {% endfor %}
+                </tbody> 
+            </table>
 
             <p align="right">
-                <a href="{{ path('admin_cms_edit', {'id': page.id}) }}" class="btn btn-success">Enregistrer</a> <a href="{{ path('admin_cms_index') }}" class="btn">Retour</a>
+                <a href="{{ path('admin_cms_index') }}" class="btn">Retour</a>
             </p>
 
 		</div>
 	</div>
+
+    <script type="text/javascript">
+        $(document).ready(function() { 
+            $("#myTable").tablecloth({
+                theme: "stats",
+                striped: true,
+                sortable: true,
+                condensed: false,
+                bordered: false,
+                clean: false
+            });
+        }); 
+    </script>
 {% endblock %}

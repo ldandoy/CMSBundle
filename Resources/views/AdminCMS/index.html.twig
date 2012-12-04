@@ -16,7 +16,7 @@
                 <thead> 
                     <tr> 
                         <th width="10">ID</th>
-                        <th>Nome de la page</th>
+                        <th>Nom de la page</th>
                         <th>Slug</th>
                         <th width="100">Action</th> 
                     </tr>
@@ -32,21 +32,19 @@
                     {% endfor %}
                 </tbody> 
             </table> 
-
-            <script type="text/javascript">
-                $(document).ready(function() 
-                    { 
-                        $("#myTable").tablecloth({
-                            theme: "stats",
-                            striped: true,
-                            sortable: true,
-                            condensed: false,
-                            bordered: false,
-                            clean: false
-                        });
-                    }
-                ); 
-            </script>
 		</div>
 	</div>
+
+    <script type="text/javascript">
+        $(document).ready(function() { 
+            $("#myTable").tablecloth({
+                theme: "stats",
+                striped: true,
+                sortable: true,
+                condensed: false,
+                bordered: false,
+                clean: false
+            });
+        }); 
+    </script>
 {% endblock %}

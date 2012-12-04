@@ -13,11 +13,7 @@
 		        <div class="colonne{{ i }}">
 		        	{% for pageModule in page.pageModules %}
 		        		{% if pageModule.colonneId == i %}
-                            {% for moduleContents in pageModule.pageModuleContents %}
-                                <div id="" class="">
-                                    {{ moduleContents.valeur }}
-                                </div>
-                            {% endfor %}
+                            {% include "CMSBundle:CMS:block_" ~ pageModule.module.template ~ ".html.twig" %}
                         {% endif %}
 		        	{% endfor %}
 		        </div>

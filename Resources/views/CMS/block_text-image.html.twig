@@ -1,0 +1,10 @@
+<div id="" class="">
+	{% for moduleContents in pageModule.pageModuleContents %}
+		{% if moduleContents.libelle == "image" %}
+			<img src="{{ moduleContents.valeur }}" alt="" />
+		{% endif %}
+		{% if moduleContents.libelle == "text" %}
+			{{ moduleContents.valeur }}
+		{% endif %}
+    {% endfor %}
+</div>
