@@ -5,6 +5,7 @@ namespace StartPack\CMSBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 use StartPack\CoreBundle\Entity as Model;
 use StartPack\CoreBundle\Form as Form;
@@ -55,6 +56,27 @@ class AdminCMSController extends AbstractCoreController
             "page"  =>  $page,
             'activeCMS' => true,
             'form' => $form->createView()
+        );
+    }
+
+    /**
+     * @Route("/{id_page}/module/{id_page_module}", name="admin_cms_module_edit")
+     * @ParamConverter("page", class="CoreBundle:Page", options={"id" = "id_page"})
+     * @ParamConverter("pageModule", class="CoreBundle:PageModule", options={"id" = "id_page_module"})
+     * @Template()
+     */
+    public function module_editAction(Model\Page $page, Model\PageModule $pageModule)
+    {
+        if ($this->getRequest()->getMethod() == 'POST') {
+            $form->bindRequest();
+            $data = $this->getRequest()->getData();
+            var_dump($data);
+        }
+
+        return array(
+            'page'      =>  $page,
+            'pageModule'    =>  $pageModule,
+            'activeCMS' =>  true
         );
     }
 }

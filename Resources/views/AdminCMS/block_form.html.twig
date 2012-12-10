@@ -1,0 +1,11 @@
+{% for pageModuleContent in pageModule.pageModuleContents %}
+	<div class="">
+		<div class="fLeft width30p">
+			<label class="required" for="">{{ pageModuleContent.libelle }}</label>
+		</div>
+		<div class="fLeft width50p">
+			<input id="" class="width100p" type="text" value="{{ pageModuleContent.valeur }}" maxlength="255" required="required" name="" placeholder="">
+		</div>
+		<br class="sep">
+	</div>
+{% endfor %}
