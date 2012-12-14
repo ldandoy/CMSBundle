@@ -16,6 +16,9 @@
     	<div class="span12">
             <div class="page-header">
                 <h3 class="fLeft">Edition du module: {{ pageModule.module.nom }}</h3>
+                <div class="fRight marginTop20px">
+                    <a href="{{ path('page', {'slug': page.slug} ) }}" target="_blanck" class="">Voir le site</a>
+                </div>
                 <br class="sep" />
             </div>
 

@@ -1,10 +1,17 @@
 {% for pageModuleContent in pageModule.pageModuleContents %}
 	<div class="">
 		<div class="fLeft width30p">
-			<label class="required" for="">{{ pageModuleContent.libelle }}</label>
+			<label class="required" for="{{ pageModuleContent.libelle }}-{{ pageModuleContent.id }}">{{ pageModuleContent.libelle }}</label>
 		</div>
 		<div class="fLeft width50p">
-			<input id="" class="width100p" type="text" value="{{ pageModuleContent.valeur }}" maxlength="255" required="required" name="" placeholder="">
+			{% if pageModuleContent.libelle == 'text' %}
+				<textarea class="width100p" rows="10" id="{{ pageModuleContent.libelle }}-{{ pageModuleContent.id }}" name="{{ pageModuleContent.libelle }}-{{ pageModuleContent.id }}" placeholder="">{{ pageModuleContent.valeur }}</textarea>
+				<script type="text/javascript">
+			        $('#{{ pageModuleContent.libelle }}-{{ pageModuleContent.id }}').wysihtml5();
+			    </script>
+			{% else %}
+				<input id="{{ pageModuleContent.libelle }}-{{ pageModuleContent.id }}" class="width100p" type="text" value="{{ pageModuleContent.valeur }}" maxlength="255" required="required" name="{{ pageModuleContent.libelle }}-{{ pageModuleContent.id }}" placeholder="">
+			{% endif %}
 		</div>
 		<br class="sep">
 	</div>

@@ -68,9 +68,12 @@ class AdminCMSController extends AbstractCoreController
     public function module_editAction(Model\Page $page, Model\PageModule $pageModule)
     {
         if ($this->getRequest()->getMethod() == 'POST') {
-            $form->bindRequest();
-            $data = $this->getRequest()->getData();
-            var_dump($data);
+            
+            // On boucle sur les champs des modules.
+            foreach ($pageModule->getPageModuleContents() as $key => $pageModuleContents) {
+                $pageModuleContents->setValeur($this->get('request')->request->get($pageModuleContents->getLibelle() . '-'.$pageModuleContents->getId()));
+                $this->saveAndFlush($pageModuleContents);
+            }
         }
 
         return array(

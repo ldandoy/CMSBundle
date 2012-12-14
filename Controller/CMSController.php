@@ -17,7 +17,7 @@ use StartPack\CoreBundle\Controller\AbstractCoreController;
 class CMSController extends AbstractCoreController
 {
     /**
-     * @Route("/")
+     * @Route("/", name="page")
      * @Template()
      */
     public function indexAction($slug)

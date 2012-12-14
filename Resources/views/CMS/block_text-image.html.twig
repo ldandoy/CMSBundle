@@ -4,7 +4,7 @@
 			<img src="{{ moduleContents.valeur }}" alt="" />
 		{% endif %}
 		{% if moduleContents.libelle == "text" %}
-			{{ moduleContents.valeur }}
+			{{ moduleContents.valeur|raw }}
 		{% endif %}
     {% endfor %}
 </div>
