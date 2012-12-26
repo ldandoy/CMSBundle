@@ -4,11 +4,13 @@
 
 {% block css %}
 <link rel="stylesheet" type="text/css" href="{{ asset('bundles/cms/css/bootstrap-wysihtml5-0.0.2.css') }}"></link>
+<link rel="stylesheet" type="text/css" href="{{ asset('bundles/cms/css/jquery.Jcrop.min.css') }}"></link>
 {% endblock %}
 
 {% block js %}
 <script src="{{ asset('bundles/cms/js/wysihtml5-0.3.0_rc2.min.js') }}"></script>
 <script src="{{ asset('bundles/cms/js/bootstrap-wysihtml5-0.0.2.min.js') }}"></script>
+<script src="{{ asset('bundles/cms/js/jquery.Jcrop.min.js') }}"></script>
 {% endblock %}
 
 {% block body %}
@@ -17,7 +19,7 @@
             <div class="page-header">
                 <h3 class="fLeft">Edition du module: {{ pageModule.module.nom }}</h3>
                 <div class="fRight marginTop20px">
-                    <a href="{{ path('page', {'slug': page.slug} ) }}" target="_blanck" class="">Voir le site</a>
+                    <a href="{{ path('page', {'slug': page.slug} ) }}" target="_blanck" class="btn btn-info">Voir le site</a>
                 </div>
                 <br class="sep" />
             </div>

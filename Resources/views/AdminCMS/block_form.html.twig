@@ -1,13 +1,37 @@
 {% for pageModuleContent in pageModule.pageModuleContents %}
 	<div class="">
-		<div class="fLeft width30p">
-			<label class="required" for="{{ pageModuleContent.libelle }}-{{ pageModuleContent.id }}">{{ pageModuleContent.libelle }}</label>
+		<div class="fLeft width20p">
+			<label class="required" for="{{ pageModuleContent.libelle }}-{{ pageModuleContent.id }}">{{ pageModuleContent.libelle |capitalize }}</label>
 		</div>
-		<div class="fLeft width50p">
+		<div class="fLeft width80p">
 			{% if pageModuleContent.libelle == 'text' %}
 				<textarea class="width100p" rows="10" id="{{ pageModuleContent.libelle }}-{{ pageModuleContent.id }}" name="{{ pageModuleContent.libelle }}-{{ pageModuleContent.id }}" placeholder="">{{ pageModuleContent.valeur }}</textarea>
 				<script type="text/javascript">
 			        $('#{{ pageModuleContent.libelle }}-{{ pageModuleContent.id }}').wysihtml5();
+			    </script>
+			{% elseif pageModuleContent.libelle == 'image' %}
+				<img src="{{ pageModuleContent.valeur }}" alt="" class="width30p fLeft" id="target" />
+
+				<input id="{{ pageModuleContent.libelle }}-{{ pageModuleContent.id }}" class="width60p fRight" type="text" value="{{ pageModuleContent.valeur }}" maxlength="255" required="required" name="{{ pageModuleContent.libelle }}-{{ pageModuleContent.id }}" placeholder="">
+
+				<script type="text/javascript">
+			        /*$('#target').Jcrop({
+						onChange: showPreview,
+						onSelect: showPreview,
+						aspectRatio: 1
+					});*/
+
+					function showPreview (coords) {
+						var rx = 100 / coords.w;
+						var ry = 100 / coords.h;
+
+						$('#preview').css({
+							width: Math.round(rx * 500) + 'px',
+							height: Math.round(ry * 370) + 'px',
+							marginLeft: '-' + Math.round(rx * coords.x) + 'px',
+							marginTop: '-' + Math.round(ry * coords.y) + 'px'
+						});
+					}
 			    </script>
 			{% else %}
 				<input id="{{ pageModuleContent.libelle }}-{{ pageModuleContent.id }}" class="width100p" type="text" value="{{ pageModuleContent.valeur }}" maxlength="255" required="required" name="{{ pageModuleContent.libelle }}-{{ pageModuleContent.id }}" placeholder="">
