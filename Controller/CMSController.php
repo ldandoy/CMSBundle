@@ -11,24 +11,18 @@ use StartPack\CoreBundle\Form as Form;
 
 use StartPack\CoreBundle\Controller\AbstractCoreController;
 
- /**
-     * @Route("/page/{slug}")
-     */
-class CMSController extends AbstractCoreController
-{
-    /**
-     * @Route("/", name="page")
-     * @Template()
-     */
-    public function indexAction($slug)
-    {
-    	$page = $this->getDoctrine()->getRepository('CoreBundle:Page')->findOneBySlug($slug);
-        $config = $this->getDoctrine()->getRepository('CoreBundle:Config')->getConfig();
-        
-        return array(
-        	'page'     => $page,
-            'config'   => $config,
-        	'slug'     => $slug
-        );
-    }
+/**
+ * @Route("/page/{slug}")
+ */
+class CMSController extends AbstractCoreController {
+	/**
+	 * @Route("/", name="page")
+	 * @Template()
+	 */
+	public function indexAction($slug) {
+		$page = $this->getDoctrine()->getRepository('CoreBundle:Page')->findOneBySlug($slug);
+		$config = $this->getDoctrine()->getRepository('CoreBundle:Config')->getConfig();
+
+		return array('page' => $page, 'config' => $config, 'slug' => $slug);
+	}
 }
