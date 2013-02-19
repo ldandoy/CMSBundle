@@ -21,7 +21,7 @@ class AdminCMSController extends AbstractCoreController {
 	 * @Template()
 	 */
 	public function indexAction() {
-		$pages = $this->getDoctrine()->getRepository('CoreBundle:Page')->findAll();
+		$pages = $this->getDoctrine()->getRepository('CMSBundle:Page')->findAll();
 
 		return array('pages' => $pages, 'activeCMS' => true);
 	}
@@ -47,7 +47,7 @@ class AdminCMSController extends AbstractCoreController {
 
 	/**
 	 * @Route("/{id_page}/module/{id_page_module}", name="admin_cms_module_edit")
-	 * @ParamConverter("page", class="CoreBundle:Page", options={"id" = "id_page"})
+	 * @ParamConverter("page", class="CMSBundle:Page", options={"id" = "id_page"})
 	 * @ParamConverter("pageModule", class="CoreBundle:PageModule", options={"id" = "id_page_module"})
 	 * @Template()
 	 */
