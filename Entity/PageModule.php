@@ -1,12 +1,12 @@
 <?php
 
-namespace StartPack\CoreBundle\Entity;
+namespace StartPack\CMSBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * StartPack\CoreBundle\Entity\PageModule
+ * StartPack\CMSBundle\Entity\PageModule
  *
  * @ORM\Table(name="page_module")
  * @ORM\Entity
@@ -121,10 +121,10 @@ class PageModule {
 	/**
 	 * Set module
 	 *
-	 * @param StartPack\CoreBundle\Entity\Module $module
+	 * @param StartPack\CMSBundle\Entity\Module $module
 	 * @return PageModule
 	 */
-	public function setModule(\StartPack\CoreBundle\Entity\Module $module = null) {
+	public function setModule(\StartPack\CMSBundle\Entity\Module $module = null) {
 		$this->module = $module;
 
 		return $this;
@@ -133,7 +133,7 @@ class PageModule {
 	/**
 	 * Get module
 	 *
-	 * @return StartPack\CoreBundle\Entity\Module 
+	 * @return StartPack\CMSBundle\Entity\Module 
 	 */
 	public function getModule() {
 		return $this->module;

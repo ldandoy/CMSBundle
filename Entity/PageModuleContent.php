@@ -1,11 +1,11 @@
 <?php
 
-namespace StartPack\CoreBundle\Entity;
+namespace StartPack\CMSBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * StartPack\CoreBundle\Entity\PageModuleContent
+ * StartPack\CMSBundle\Entity\PageModuleContent
  *
  * @ORM\Table(name="page_module_content")
  * @ORM\Entity
@@ -98,10 +98,10 @@ class PageModuleContent {
 	/**
 	 * Set pageModule
 	 *
-	 * @param StartPack\CoreBundle\Entity\PageModule $pageModule
+	 * @param StartPack\CMSBundle\Entity\PageModule $pageModule
 	 * @return PageModuleContent
 	 */
-	public function setPageModule(\StartPack\CoreBundle\Entity\PageModule $pageModule = null) {
+	public function setPageModule(\StartPack\CMSBundle\Entity\PageModule $pageModule = null) {
 		$this->pageModule = $pageModule;
 
 		return $this;
@@ -110,7 +110,7 @@ class PageModuleContent {
 	/**
 	 * Get pageModule
 	 *
-	 * @return StartPack\CoreBundle\Entity\PageModule 
+	 * @return StartPack\CMSBundle\Entity\PageModule 
 	 */
 	public function getPageModule() {
 		return $this->pageModule;

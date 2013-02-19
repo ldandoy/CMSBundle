@@ -1,11 +1,11 @@
 <?php
 
-namespace StartPack\CoreBundle\Entity;
+namespace StartPack\CMSBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * StartPack\CoreBundle\Entity\Module
+ * StartPack\CMSBundle\Entity\Module
  *
  * @ORM\Table(name="module")
  * @ORM\Entity

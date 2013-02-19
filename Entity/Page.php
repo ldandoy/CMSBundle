@@ -1,12 +1,12 @@
 <?php
 
-namespace StartPack\CoreBundle\Entity;
+namespace StartPack\CMSBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * StartPack\CoreBundle\Entity\Page
+ * StartPack\CMSBundle\Entity\Page
  *
  * @ORM\Table(name="page")
  * @ORM\Entity
