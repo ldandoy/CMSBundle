@@ -6,157 +6,191 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * StartPack\CMSBundle\Entity\PageModule
+ * PageModule
  *
  * @ORM\Table(name="page_module")
  * @ORM\Entity
  */
-class PageModule {
-	/**
-	 * @var integer $id
-	 *
-	 * @ORM\Column(name="id", type="integer", nullable=false)
-	 * @ORM\Id
-	 * @ORM\GeneratedValue(strategy="IDENTITY")
-	 */
-	private $id;
+class PageModule
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
 
-	/**
-	 * @var integer $colonneId
-	 *
-	 * @ORM\Column(name="colonne_id", type="integer", nullable=false)
-	 */
-	private $colonneId;
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="colonne_id", type="integer", nullable=false)
+     */
+    private $colonneId;
 
-	/**
-	 * @var integer $ordre
-	 *
-	 * @ORM\Column(name="ordre", type="integer", nullable=false)
-	 */
-	private $ordre;
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="ordre", type="integer", nullable=false)
+     */
+    private $ordre;
 
-	/**
-	 * @var Page
-	 *
-	 * @ORM\ManyToOne(targetEntity="Page")
-	 * @ORM\JoinColumns({
-	 *   @ORM\JoinColumn(name="page", referencedColumnName="id")
-	 * })
-	 */
-	private $page;
+    /**
+     * @var \Page
+     *
+     * @ORM\ManyToOne(targetEntity="Page")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="page", referencedColumnName="id")
+     * })
+     */
+    private $page;
 
-	/**
-	 * @var Module
-	 *
-	 * @ORM\ManyToOne(targetEntity="Module")
-	 * @ORM\JoinColumns({
-	 *   @ORM\JoinColumn(name="module", referencedColumnName="id")
-	 * })
-	 */
-	private $module;
+    /**
+     * @var \Module
+     *
+     * @ORM\ManyToOne(targetEntity="Module")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="module", referencedColumnName="id")
+     * })
+     */
+    private $module;
 
-	/**
-	 * @var pageModuleContents
-	 *
-	 * @ORM\OneToMany(targetEntity="PageModuleContent", mappedBy="pageModule")
-	 * 
-	 */
-	private $pageModuleContents;
+    /**
+    * @var pageModuleContents
+    *
+    * @ORM\OneToMany(targetEntity="PageModuleContent", mappedBy="pageModule")
+    *
+    */
+    private $pageModuleContents;
 
-	public function __construct() {
-		$this->pageModuleContents = new ArrayCollection();
-	}
 
-	/**
-	 * Get id
-	 *
-	 * @return integer 
-	 */
-	public function getId() {
-		return $this->id;
-	}
+    public function __construct() {
+        $this->pageModuleContents = new ArrayCollection();
+    }
 
-	/**
-	 * Set colonneId
-	 *
-	 * @param integer $colonneId
-	 * @return PageModule
-	 */
-	public function setColonneId($colonneId) {
-		$this->colonneId = $colonneId;
 
-		return $this;
-	}
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
-	/**
-	 * Get colonneId
-	 *
-	 * @return integer 
-	 */
-	public function getColonneId() {
-		return $this->colonneId;
-	}
+    /**
+     * Set colonneId
+     *
+     * @param integer $colonneId
+     * @return PageModule
+     */
+    public function setColonneId($colonneId)
+    {
+        $this->colonneId = $colonneId;
+    
+        return $this;
+    }
 
-	/**
-	 * Set ordre
-	 *
-	 * @param integer $ordre
-	 * @return PageModule
-	 */
-	public function setOrdre($ordre) {
-		$this->ordre = $ordre;
+    /**
+     * Get colonneId
+     *
+     * @return integer 
+     */
+    public function getColonneId()
+    {
+        return $this->colonneId;
+    }
 
-		return $this;
-	}
+    /**
+     * Set ordre
+     *
+     * @param integer $ordre
+     * @return PageModule
+     */
+    public function setOrdre($ordre)
+    {
+        $this->ordre = $ordre;
+    
+        return $this;
+    }
 
-	/**
-	 * Get ordre
-	 *
-	 * @return integer 
-	 */
-	public function getOrdre() {
-		return $this->ordre;
-	}
+    /**
+     * Get ordre
+     *
+     * @return integer 
+     */
+    public function getOrdre()
+    {
+        return $this->ordre;
+    }
 
-	/**
-	 * Set module
-	 *
-	 * @param StartPack\CMSBundle\Entity\Module $module
-	 * @return PageModule
-	 */
-	public function setModule(\StartPack\CMSBundle\Entity\Module $module = null) {
-		$this->module = $module;
+    /**
+     * Set page
+     *
+     * @param \StartPack\CMSBundle\Entity\Page $page
+     * @return PageModule
+     */
+    public function setPage(\StartPack\CMSBundle\Entity\Page $page = null)
+    {
+        $this->page = $page;
+    
+        return $this;
+    }
 
-		return $this;
-	}
+    /**
+     * Get page
+     *
+     * @return \StartPack\CMSBundle\Entity\Page 
+     */
+    public function getPage()
+    {
+        return $this->page;
+    }
 
-	/**
-	 * Get module
-	 *
-	 * @return StartPack\CMSBundle\Entity\Module 
-	 */
-	public function getModule() {
-		return $this->module;
-	}
+    /**
+     * Set module
+     *
+     * @param \StartPack\CMSBundle\Entity\Module $module
+     * @return PageModule
+     */
+    public function setModule(\StartPack\CMSBundle\Entity\Module $module = null)
+    {
+        $this->module = $module;
+    
+        return $this;
+    }
 
-	/**
-	 * Set pageModuleContents
-	 *
-	 * @param string $pageModuleContents
-	 * @return Page
-	 */
-	public function setPageModules($pageModuleContents) {
-		$this->pageModuleContents = $pageModuleContents;
+    /**
+     * Get module
+     *
+     * @return \StartPack\CMSBundle\Entity\Module 
+     */
+    public function getModule()
+    {
+        return $this->module;
+    }
 
-		return $this;
-	}
+    /**
+    * Set pageModuleContents
+    *
+    * @param string $pageModuleContents
+    * @return Page
+    */
+    public function setPageModules($pageModuleContents) {
+    $this->pageModuleContents = $pageModuleContents;
 
-	/**
-	 * Get pageModuleContents
-	 *
-	 * @return string 
-	 */
-	public function getPageModuleContents() {
-		return $this->pageModuleContents;
-	}
+    return $this;
+    }
+
+    /**
+    * Get pageModuleContents
+    *
+    * @return string
+    */
+    public function getPageModuleContents() {
+    return $this->pageModuleContents;
+    }
+
 }

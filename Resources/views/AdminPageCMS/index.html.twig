@@ -1,0 +1,72 @@
+{% extends 'AdminBundle:Base:base.html.twig' %}
+
+{% block title %}StartPack | Admin - Login{% endblock %}
+
+{% block headline %}Administration - Liste des pages{% endblock headline %}
+
+{% block content_topbar_content %}
+	<a href="#myModal" class="btn btn-success" role="button" data-toggle="modal"><i class="icon-plus"></i> Ajouter une page</a>
+{% endblock content_topbar_content %}
+
+{% block content_content %}
+    <table id="myTable" class="tablesorter"> 
+        <thead> 
+            <tr> 
+                <th width="10">ID</th>
+                <th>Nom de la page</th>
+                <th>Slug</th>
+                <th width="150">Action</th> 
+            </tr>
+        </thead> 
+        <tbody>
+            {% for page in pages %}
+                <tr>
+                    <td>{{ page.id }}</td>
+                    <td>{{ page.name }}</td>
+                    <td>{{ page.slug }}</td>
+                    <td><a class="btn btn-info btn-mini" href="{{ path('admin_cms_page_view', {'id': page.id}) }}"><i class="icon-eye-open"></i></a> <a class="btn btn-success btn-mini" href="{{ path('admin_cms_page_edit', {'id': page.id}) }}"><i class="icon-pencil"></i></a> <a class="btn btn-danger btn-mini" href=""><i class="icon-trash"></i></a></td>
+                </tr>
+            {% endfor %}
+        </tbody> 
+    </table>
+    
+    <!-- Modal -->
+	<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<form action="{{ path('admin_cms_page_add') }}" method="POST">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+			<h3 id="myModalLabel">Ajouter une nouvelle page</h3>
+		</div>
+		<div class="modal-body">
+        			<div class="">
+                <div class="fLeft width30p">{{ form_label(form.name) }}</div>
+                <div class="fLeft width50p">{{ form_widget(form.name) }} {{ form_errors(form.name) }}</div>
+                <br class="sep" />
+        </div>
+        <div class="">
+                <div class="fLeft width30p">{{ form_label(form.slug) }}</div>
+                <div class="fLeft width50p">{{ form_widget(form.slug) }} {{ form_errors(form.slug) }}</div>
+                <br class="sep" />
+        </div>
+        {{ form_rest(form) }}
+		</div>
+		<div class="modal-footer">
+			<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+			<button class="btn btn-success">Ajouter</button>
+		</div>
+		</form>
+	</div>
+
+    <script type="text/javascript">
+        $(document).ready(function() { 
+            $("#myTable").tablecloth({
+                theme: "stats",
+                striped: true,
+                sortable: true,
+                condensed: false,
+                bordered: false,
+                clean: false
+            });
+        }); 
+    </script>
+{% endblock content_content %}

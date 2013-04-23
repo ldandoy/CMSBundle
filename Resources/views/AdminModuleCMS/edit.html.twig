@@ -1,0 +1,30 @@
+{% extends 'AdminBundle:Base:base.html.twig' %}
+
+{% block title %}StartPack | Admin - Login{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{{ asset('bundles/cms/css/bootstrap-wysihtml5-0.0.2.css') }}"></link>
+<script src="{{ asset('bundles/cms/js/ckeditor/ckeditor.js') }}"></script>
+<link rel="stylesheet" type="text/css" href="{{ asset('bundles/cms/css/jquery.Jcrop.min.css') }}"></link>
+{% endblock css %}
+
+{% block js %}
+<script src="{{ asset('bundles/cms/js/wysihtml5-0.3.0_rc2.min.js') }}"></script>
+<script src="{{ asset('bundles/cms/js/bootstrap-wysihtml5-0.0.2.min.js') }}"></script>
+<script src="{{ asset('bundles/cms/js/jquery.Jcrop.min.js') }}"></script>
+{% endblock js %}
+
+{% block headline %}Administration - Edition du module: {{ pageModule.module.nom }}{% endblock headline %}
+
+{% block content_topbar_content %}
+	<a href="{{ path('page', {'slug': page.slug} ) }}" target="_blanck" class="btn btn-info">Voir le site</a>
+{% endblock content_topbar_content %}
+
+{% block content %}
+    <form action="{{ path('admin_cms_module_edit', {'id_page': page.id, 'id_page_module': pageModule.id}) }}" method="POST">
+        {% include "CMSBundle:AdminModuleCMS:block_form.html.twig" %}
+        <p class="marginTop20px" align="right">
+            <button class="btn btn-success">Enregistrer</button> <a href="{{ path('admin_cms_page_view', {'id': page.id}) }}" class="btn">Retour</a>
+        </p>
+    </form>
+{% endblock content %}

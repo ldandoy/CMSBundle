@@ -1,0 +1,25 @@
+{% form_theme form 'AdminBundle:Form:form_admin.html.twig' %}
+{% extends 'AdminBundle:Base:base.html.twig' %}
+
+{% block title %}StartPack | Admin - Edition de la page: {{ page.name }}{% endblock %}
+
+{% block headline %}Administration - Edition de la page: {{ page.name }}{% endblock headline %}
+
+{% block content %}
+<form action="{{ path('admin_cms_page_edit', {'id': page.id}) }}" method="POST">
+	<div class="">
+		<div class="fLeft width30p">{{ form_label(form.name) }}</div>
+		<div class="fLeft width50p">{{ form_widget(form.name) }} {{ form_errors(form.name) }}</div>
+		<br class="sep" />
+	</div>
+	<div class="">
+		<div class="fLeft width30p">{{ form_label(form.slug) }}</div>
+		<div class="fLeft width50p">{{ form_widget(form.slug) }} {{ form_errors(form.slug) }}</div>
+		<br class="sep" />
+	</div>
+	<p align="right">
+		<input type="submit" class="btn btn-success" value="Enregistrer" /> <a href="{{ path('admin_cms_page_index') }}" class="btn">Retour</a>
+	</p>
+	{{ form_rest(form) }}
+</form>
+{% endblock content %}

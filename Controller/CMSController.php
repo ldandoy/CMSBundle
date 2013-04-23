@@ -9,6 +9,9 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use StartPack\CoreBundle\Entity as Model;
 use StartPack\CoreBundle\Form as Form;
 
+use StartPack\CMSBundle\Entity as CMSModel;
+use StartPack\CMSBundle\Form as CMSForm;
+
 use StartPack\CoreBundle\Controller\AbstractCoreController;
 
 /**
@@ -20,9 +23,9 @@ class CMSController extends AbstractCoreController {
 	 * @Template()
 	 */
 	public function indexAction($slug) {
-		$page = $this->getDoctrine()->getRepository('CoreBundle:Page')->findOneBySlug($slug);
+		$pageRequested = $this->getDoctrine()->getRepository('CMSBundle:Page')->findOneBySlug($slug);
 		$config = $this->getDoctrine()->getRepository('CoreBundle:Config')->getConfig();
-
-		return array('page' => $page, 'config' => $config, 'slug' => $slug);
+		
+		return array('pageName' => $pageRequested->getName(), 'pageRequested' => $pageRequested, 'config' => $config, 'slug' => $slug);
 	}
 }

@@ -12,7 +12,7 @@ class PageType extends AbstractType {
 	}
 
 	public function setDefaultOptions(OptionsResolverInterface $resolver) {
-		$resolver->setDefaults(array('data_class' => 'StartPack\CoreBundle\Entity\Page'));
+		$resolver->setDefaults(array('data_class' => 'StartPack\CMSBundle\Entity\Page'));
 	}
 
 	public function getName() {

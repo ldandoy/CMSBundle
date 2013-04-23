@@ -1,24 +1,24 @@
-{% extends "FrontBundle:Base:layout.html.twig" %}
+{% extends config['front-bundle'] ~ ":Base:layout.html.twig" %}
 
 {% block content %}
     <div class="row">
         <div class="span12">
-            <h2>{{ page.name }}</h2>
+            <h2>{{ pageRequested.name }}</h2>
         </div>
     </div>
 
     <div class="row">
     	<div class="span12">
 	    	{% for i in range(1, config['nb-colonne']) %}
-		        <div class="colonne{{ i }}">
-		        	{% for pageModule in page.pageModules %}
+		        <div class="colonne colonne{{ i }}">
+		        	{% for pageModule in pageRequested.pageModules %}
 		        		{% if pageModule.colonneId == i %}
                             {% include "CMSBundle:CMS:block_" ~ pageModule.module.template ~ ".html.twig" %}
                         {% endif %}
 		        	{% endfor %}
 		        </div>
 	        {% endfor %}
+	        <br class="sep" />
         </div>
     </div>
-    	
 {% endblock %}

@@ -1,0 +1,81 @@
+{% extends 'AdminBundle:Base:base.html.twig' %}
+
+{% block title %}StartPack | Admin - Login{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{{ asset('bundles/cms/css/bootstrap-wysihtml5-0.0.2.css') }}"></link>
+{% endblock %}
+
+{% block js %}
+<script src="{{ asset('bundles/cms/js/wysihtml5-0.3.0_rc2.min.js') }}"></script>
+<script src="{{ asset('bundles/cms/js/bootstrap-wysihtml5-0.0.2.min.js') }}"></script>
+{% endblock %}
+
+{% block headline %}Administration - Page: {{ page.name }} <span class="tSilver tFontSize12px">(/page/{{ page.slug }})</span>{% endblock headline %}
+
+{% block content_topbar_content %}
+	<a href="#myModal" class="btn btn-success" role="button" data-toggle="modal" class="btn btn-success"><i class="icon-plus"></i>Ajouter un module à la page</a>
+{% endblock content_topbar_content %}
+
+{% block content_content %}
+    <table id="myTable" class="tablesorter"> 
+    	<thead> 
+        	<tr> 
+                <th width="10">ID</th>
+                <th>Module</th>
+                <th width="10">Colonne</th>
+                <th width="100">Action</th> 
+            </tr>
+        </thead> 
+        <tbody>
+            {% for pageModule in page.pageModules %}
+                <tr>
+                    <td>{{ pageModule.id }}</td>
+                    <td>{{ pageModule.module.nom }}</td>
+                    <td align="center">{{ pageModule.colonneId }}</td>
+                    <td><a class="btn btn-success btn-mini" href="{{ path('admin_cms_module_edit', {'id_page': page.id, 'id_page_module': pageModule.id}) }}"><i class="icon-pencil"></i></a> <a class="btn btn-danger btn-mini" href="{{ path('admin_cms_module_delete', {'id_page': page.id, 'id_page_module': pageModule.id}) }}"><i class="icon-trash"></i></a></td>
+                </tr>
+            {% endfor %}
+        </tbody> 
+    </table>
+
+    <p align="right">
+        <a href="{{ path('admin_cms_page_index') }}" class="btn">Retour</a>
+    </p>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <form action="{{ path('admin_cms_module_add', {'id_page': page.id}) }}" method="POST">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 id="myModalLabel">Ajouter un nouveau module à la page</h3>
+            </div>
+            <div class="modal-body">
+                    <div class="fLeft width30p">{{ form_label(form.module) }}</div>
+                    <div class="fLeft width50p">{{ form_widget(form.module) }} {{ form_errors(form.module) }}</div>
+                    <br class="sep" />
+                    <div class="fLeft width30p">{{ form_label(form.colonneId) }}</div>
+                    <div class="fLeft width50p">{{ form_widget(form.colonneId) }} {{ form_errors(form.colonneId) }}</div>
+                    <br class="sep" />
+            </div>
+            {{ form_rest(form) }}
+            <div class="modal-footer">
+                <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                <button class="btn btn-success">Ajouter</button>
+            </div>
+        </form>
+    </div>
+
+    <script type="text/javascript">
+        $(document).ready(function() { 
+            $("#myTable").tablecloth({
+                theme: "stats",
+                striped: true,
+                sortable: true,
+                condensed: false,
+                bordered: false,
+                clean: false
+            });
+        }); 
+    </script>
+{% endblock content_content %}
